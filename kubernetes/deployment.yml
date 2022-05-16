@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: person-service-app
+  labels:
+    app: person-service-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: person-service-app
+  template:
+    metadata:
+      labels:
+        app: person-service-app
+    spec:
+      containers:
+        - name: person-service-app
+          image: miyuruw/person:0.0.1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
